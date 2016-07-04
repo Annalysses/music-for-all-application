@@ -4,6 +4,7 @@ import com.musicforall.model.Tag;
 import com.musicforall.model.Track;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,4 +21,8 @@ public interface TrackService {
     Track get(Integer id);
 
     void addTags(Integer trackId, Set<Tag> tags);
+
+    Collection<Track> getAllByName(String name);
+
+    Collection<Track> getTracksByTags(Collection<String> tagsName);
 }

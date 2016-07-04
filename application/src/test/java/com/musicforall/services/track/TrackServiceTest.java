@@ -11,10 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertFalse;
@@ -95,5 +92,33 @@ public class TrackServiceTest {
 
         assertTrue(allTags.containsAll(tagsForTrack));
         assertFalse(allTags.contains(tagService.get("soul_not_exist")));
+    }
+
+    @Test
+    public void testSearchByName() {
+        final Track track1 = new Track("sim", LOC_1);
+        final Track track2 = new Track("Sim2", LOC_1);
+        final Track track3 = new Track("asdfsimiliar", LOC_1);
+        final Track track4 = new Track("asdifferent", LOC_1);
+
+        trackService.saveAll(Arrays.asList(track1, track2, track3, track4));
+        Collection<Track> tracks = trackService.getAllByName("Sim");
+        assertTrue(tracks.size() > 1);
+    }
+
+    @Test
+    public void testSearchForTags() {
+        final Set<Tag> tagsForTrack = new HashSet<Tag>(Arrays.asList(new Tag(ROCK),
+                new Tag("pop")));
+        final Track track1 = new Track(tagsForTrack, "search_track", LOC_1);
+        final Track track2 = new Track(tagsForTrack, "search_track2", LOC_1);
+
+      //  tagsForTrack.add(new Tag("nanana"));
+        final Set<Tag> tagsForTrack2 = new HashSet<Tag>(Arrays.asList(new Tag("hahah"),
+                new Tag("lol")));
+        trackService.saveAll(Arrays.asList(track1, track2));
+       // Collection<Track> tracks = trackService.getTracksByTag("pop");
+        Collection<Track> tracks1 = trackService.getTracksByTags(tagsForTrack);
+        assertTrue(tracks1.size() > 0);
     }
 }

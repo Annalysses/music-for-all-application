@@ -4,7 +4,6 @@ import com.musicforall.model.Tag;
 import com.musicforall.model.Track;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 /**

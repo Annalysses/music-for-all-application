@@ -1,17 +1,15 @@
 package com.musicforall.services.track;
 
 import com.musicforall.common.dao.Dao;
-import com.musicforall.model.Playlist;
 import com.musicforall.model.Tag;
 import com.musicforall.model.Track;
-import org.hibernate.Criteria;
 import org.hibernate.criterion.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by Pukho on 15.06.2016.
@@ -54,7 +52,7 @@ public class TrackServiceImpl implements TrackService {
     @Override
     public Collection<Track> getAllByName(String nameTrack) {
         final DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Track.class)
-                .add(Restrictions.like("name", "%"+nameTrack+"%").ignoreCase());
+                .add(Restrictions.like("name", "%" + nameTrack + "%").ignoreCase());
         return dao.getAllBy(detachedCriteria);
     }
 
@@ -62,8 +60,8 @@ public class TrackServiceImpl implements TrackService {
     public Collection<Track> getTracksByTags(Collection<String> tagsName) {
 
         Disjunction disjuction = Restrictions.disjunction();
-        for (String t:
-             tagsName) {
+        for (String t :
+                tagsName) {
             disjuction.add(Restrictions.eq("tgs.name", t).ignoreCase());
         }
         DetachedCriteria subcriteria = DetachedCriteria.forClass(Track.class)

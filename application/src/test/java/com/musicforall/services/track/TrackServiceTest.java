@@ -118,7 +118,12 @@ public class TrackServiceTest {
                 new Tag("lol")));
         trackService.saveAll(Arrays.asList(track1, track2));
        // Collection<Track> tracks = trackService.getTracksByTag("pop");
-        Collection<Track> tracks1 = trackService.getTracksByTags(tagsForTrack);
+
+        List<String> tagNames = new ArrayList<String>();
+        for (Tag tag : tagsForTrack) {
+            tagNames.add(tag.getName());
+        }
+        Collection<Track> tracks1 = trackService.getTracksByTags(tagNames);
         assertTrue(tracks1.size() > 0);
     }
 }

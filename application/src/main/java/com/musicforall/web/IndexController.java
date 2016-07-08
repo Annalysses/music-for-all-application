@@ -35,7 +35,12 @@ public class IndexController {
     }
 
     @RequestMapping("/login")
-    public String login(Model model, CsrfToken csrf) {
+    public String login(Model model) {
         return "login";
+    }
+
+    @RequestMapping("/tracksearch")
+    public String search(Model model) {
+        return "tracksearch";
     }
 }

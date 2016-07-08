@@ -2,6 +2,8 @@ package com.musicforall.services.user;
 
 import com.musicforall.model.User;
 
+import java.util.List;
+
 /**
  * Created by Pukho on 16.06.2016.
  */
@@ -19,4 +21,6 @@ public interface UserService {
     boolean isUserExist(String name);
 
     User getByName(String name);
+
+    List<User> findAll();
 }

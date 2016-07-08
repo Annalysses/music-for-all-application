@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Pukho on 16.06.2016.
  */
@@ -63,6 +65,11 @@ public class UserServiceImpl implements UserService {
                 .add(Property.forName("name").eq(name));
 
         return dao.getBy(detachedCriteria);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return dao.all(User.class);
     }
 }
 

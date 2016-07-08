@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -73,5 +74,11 @@ public class TrackServiceImpl implements TrackService {
                 .add(Subqueries.propertyIn("id", subcriteria));
 
         return dao.getAllBy(detachedCriteria);
+    }
+
+
+    @Override
+    public List<Track> findAll() {
+        return dao.all(Track.class);
     }
 }

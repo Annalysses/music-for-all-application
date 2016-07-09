@@ -22,9 +22,9 @@ public interface TrackService {
 
     void addTags(Integer trackId, Set<Tag> tags);
 
-    Collection<Track> getAllByName(String name);
+    List<Track> getAllByName(String name);
 
-    Collection<Track> getTracksByTags(Collection<String> tagsName);
+    List<Track> getTracksByTags(Collection<String> tagsName);
 
     List<Track> findAll();
 }

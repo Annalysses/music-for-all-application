@@ -39,9 +39,9 @@
     </div>
 </nav>
 <div class="container" id="top">
-    <form class="form-inline text-center " id="search-form">
+    <form id="search-form" class="form-inline text-center ">
         <div class="input-group " placeholder="Search">
-            <input id="query" class="form-control" type="text" value="ABC" placeholder="Search"
+            <input id="query" class="form-control" type="text" value="tr" placeholder="Search"
                 name="query" autofocus="autofocus" />
             <div class="input-group-btn">
                 <input id="searchButton" data-style="slide-left" class="btn btn-success "
@@ -49,12 +49,12 @@
             </div>
         </div>
         <select name="category">
-            <option>Title</option>
-            <option>Artist</option>
-            <option>Album</option>
+            <option value="title">Title</option>
+            <option value="artist">Artist</option>
+            <option value="album">Album</option>
         </select>
     </form>
-    <span id="status"></span>
+    <span id="status-message" class="well"></span>
     <div id="resultsd" class="well ">
         <table id="results" class="table table-hover table-striped table-condensed ">
             <thead>
@@ -65,21 +65,20 @@
                 <th>Duration</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-            <td>
-            <button type="button" class="btn btn-xs btn-success">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="btn btn-xs btn-success" onclick="console.log('ajaxAddSong(id)')">
-                <span class='glyphicon glyphicon-plus'aria-hidden='true'></span>
-            </button>
-            </td>
-            <td>Artist</td>
-            <td>Title</td>
-            <td>Duration</td>
+
+            <tr id="row-template" style="display: none">
+                <td>
+                    <button type="button" class="btn btn-xs btn-success">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-success">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </td>
+                <td>Artist</td>
+                <td>Title</td>
+                <td>Duration</td>
             </tr>
-            </tbody>
         </table>
     </div>
     <a id="scroll-to-top" href="#top" title="Scroll to top">Top</a>
